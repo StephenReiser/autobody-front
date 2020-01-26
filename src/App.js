@@ -43,7 +43,7 @@ function App() {
   if (process.env.NODE_ENV === 'development') {
     backendURL = 'http://localhost:3003/customers/'
   } else {
-    baseURL = 'https://fathomless-sierra-68956.herokuapp.com'
+    baseURL = 'https://autobody-back.herokuapp.com/customers/'
   }
   
 
