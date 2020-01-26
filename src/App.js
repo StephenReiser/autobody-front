@@ -34,7 +34,17 @@ function App() {
   const [customerDetails, setCustomerDetails] = useState(null)
   const [showAddCustomer, setShowAddCustomer] = useState(false)
   const [viewCustomerDetails, setViewCustomerDetails] = useState(false)
-  const backendURL = "http://localhost:3003/customers/"
+  let backendURL = "http://localhost:3003/customers/"
+
+  
+
+
+
+  if (process.env.NODE_ENV === 'development') {
+    backendURL = 'http://localhost:3003/customers/'
+  } else {
+    baseURL = 'https://fathomless-sierra-68956.herokuapp.com'
+  }
   
 
   // end global state
