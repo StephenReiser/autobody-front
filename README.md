@@ -16,3 +16,7 @@ All changes to queues are added to the database. However it is assumed that when
 Navigate to the autbody-front directory in terminal and type 'npm i' to install the dependencies and then type npm start to launch it on localhost:3000
 
 If your backend is not running on port 3003, please update line 37 from App.js to your correct port
+
+## Live URL
+
+Live link to a working version is: https://autobody-front.herokuapp.com/
