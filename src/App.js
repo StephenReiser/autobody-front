@@ -43,7 +43,7 @@ function App() {
   if (process.env.NODE_ENV === 'development') {
     backendURL = 'http://localhost:3003/customers/'
   } else {
-    baseURL = 'https://autobody-back.herokuapp.com/customers/'
+    backendURL = 'https://autobody-back.herokuapp.com/customers/'
   }
   
 
