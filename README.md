@@ -1,68 +1,18 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Summary
 
-## Available Scripts
+This is the front end of the autobody app. For a quick an easy deployment, this was built with create-react-app. 
 
-In the project directory, you can run:
+There are three mechanics - all are created on the front end as the assumption is they are always working. A user can log a new customer by clicking on 'Add New Customer' in the nav bar. This opens up a form for the user to create a new customer - all fields are required. The user is then able to either select "First available" or pick a specific mechanic. Selecting first available will add the customer to the mechanic who has the shortest queue. If a specific mechanic is selected, then the customer will be added to the end of that mechanic's queue.
 
-### `npm start`
+All customers are also added to the 'waiting room' where they are listed in order of arival. They can be deleted here if the user chooses. Additionally, by clicking on 'Details' a window opens to provide full details for the customer, including personal info, vehicle info, and time of arrival.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Each mechanic has the ability to show/hide their queue by clicking on the 'Hide/Show Queue' button. Additionally, each mechanic can update their queue by Starting work - which pushes their first customer from their queue into their garage. This changes the mechanic's status to busy, shows who they are working with, updates their wait time, and updates their queue as well as the waiting room's queue. Once the mechanic finishes their work, they can click on 'Finish Work' which updates their status to 'Free' as well as updates their wait time. To start work for another customer they can then click on 'Start Work'.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+All changes to queues are added to the database. However it is assumed that when the app is closed, all customers currently with a mechanic will be completed and removed from the queue and db. However anyone still in queue/the waiting room will remain.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Setup Instructions
+Navigate to the autbody-front directory in terminal and type 'npm i' to install the dependencies and then type npm start to launch it on localhost:3000
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+If your backend is not running on port 3003, please update line 37 from App.js to your correct port
