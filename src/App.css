@@ -57,10 +57,10 @@
 
 
 .myModalContent {
-  background-color: white;
+  background-color: #F4F4EF;
   margin: 10% auto; 
   padding: 50px;
-  border: 1px solid #888;
+  border: 1px solid #20232A;
   width: 80%; 
 }
 
@@ -71,7 +71,7 @@
   margin-bottom: 10px;
 }
 
-/*styling for buttons */
+/*styling for buttons - overrides for bootstrap */
 .btn {
   margin: 0px 2px;
 }
@@ -112,24 +112,17 @@
 .card-footer {
   text-align: center;
 }
-/* 
-@media (min-width: 800) {
-  .card-deck .card {
-    -ms-flex: none;
-    flex: 1 0 0%;
-    margin-right: 15px;
-    margin-bottom: 15px;
-    margin-left: 15px;
-}
-} */
+
 .card {
   width: 250px;
 }
-
-
 /* general styles */
 
 body {
   background-color: #F4F4EF;
   color: #20232A
+}
+
+.garage {
+  margin-bottom: 25px;
 }

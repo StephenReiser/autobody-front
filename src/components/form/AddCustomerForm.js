@@ -13,7 +13,6 @@ const AddCustomerForm = () => {
     const [vehicleYear, setVehicleYear] = useState('')
     const [licensePlate, setLicensePlate] = useState('')
     const [phoneNumber, setPhoneNumber] = useState('')
-    // const [timeOfArrival, setTimeOfArrival] = useState('')
     const [selectMechanic, setSelectMechanic] = useState('First')
 
     
@@ -71,13 +70,16 @@ const AddCustomerForm = () => {
 
         newCustomer.mechanic = newMechanicList[shortestQueueIndex].name
 
+        // fetch to add the customer to the DB and then reset form as well as update state
+
         fetch(backendURL, {
             method: 'POST',
             body: JSON.stringify(newCustomer),
             headers: {
                 'Content-Type': 'application/json'
             }
-        }).then(res => res.json())
+        })
+        .then(res => res.json())
         .then(data => {
             console.log(data)
             if(data.error) {
@@ -110,76 +112,71 @@ const AddCustomerForm = () => {
     return(
         <div className = 'myModal'>
             <div className = 'myModalContent'>
-            <div className = 'row'>
-                <div className = 'col-12'>
-                <h5>Add Customer</h5>
-                </div>
-                <form onSubmit = {handleSubmit}>
-                    <div className = 'form-row'>
-                    <CustomerInputs 
-                        inputType = {"text"}
-                        description={"First Name:"}
-                        inputValue = { firstName }
-                        inputFunc = { setFirstName }
-                    />
-                    <CustomerInputs 
-                        inputType = {"text"}
-                        description={"Last Name:"}
-                        inputValue = { lastName }
-                        inputFunc = { setLastName }
-                    />
-                    <CustomerInputs 
-                        inputType = {"text"}
-                        description={"Vehicle Type:"}
-                        inputValue = { vehicleType }
-                        inputFunc = { setVehicleType }
-                    />
-                    <CustomerInputs 
-                        inputType = {"text"}
-                        description={"Vehicle Color:"}
-                        inputValue = { vehicleColor }
-                        inputFunc = { setVehicleColor }
-                    />
-                    <CustomerInputs 
-                        inputType = {"number"}
-                        description={"Vehicle Year:"}
-                        inputValue = { vehicleYear }
-                        inputFunc = { setVehicleYear }
-                    />
-                    <CustomerInputs 
-                        inputType = {"text"}
-                        description={"License Plate:"}
-                        inputValue = { licensePlate }
-                        inputFunc = { setLicensePlate }
-                    />
-                    <CustomerInputs 
-                        inputType = {"tel"}
-                        description={"Phone Number:"}
-                        inputValue = { phoneNumber }
-                        inputFunc = { setPhoneNumber }
-                    />
-                    <div className = 'col-6'>
-                        <label htmlFor="myMechanicSelect" ></label>
-                            Pick a mechanic:
-                            <select id = "myMechanicSelect" className = 'form-control' value={selectMechanic} onChange={e => setSelectMechanic(e.target.value)}>
-                                <option value="First" key = {'selectFirst'}>First Available</option>
-                                {mechanics.map(mechanic => {
-                                    return(
-                                        <option value={mechanic.name} key={'select'+ mechanic.name}>{mechanic.name}</option>
-                                    )
-                                })}
-                            </select>
-                        </div>
-                        
-                        
+                <div className = 'row'>
+                    <div className = 'col-12'>
+                    <h5>Add Customer</h5>
                     </div>
-                        <input className = 'btn btn-outline-primary' type='submit' value='Add Customer to Queue' />
-                        <button className = 'btn btn-outline-primary' onClick = {() => setShowAddCustomer(false)}>Close</button>
-                </form>
-                
-
-
-            </div>
+                    <form onSubmit = {handleSubmit}>
+                        <div className = 'form-row'>
+                        <CustomerInputs 
+                            inputType = {"text"}
+                            description={"First Name:"}
+                            inputValue = { firstName }
+                            inputFunc = { setFirstName }
+                        />
+                        <CustomerInputs 
+                            inputType = {"text"}
+                            description={"Last Name:"}
+                            inputValue = { lastName }
+                            inputFunc = { setLastName }
+                        />
+                        <CustomerInputs 
+                            inputType = {"text"}
+                            description={"Vehicle Type:"}
+                            inputValue = { vehicleType }
+                            inputFunc = { setVehicleType }
+                        />
+                        <CustomerInputs 
+                            inputType = {"text"}
+                            description={"Vehicle Color:"}
+                            inputValue = { vehicleColor }
+                            inputFunc = { setVehicleColor }
+                        />
+                        <CustomerInputs 
+                            inputType = {"number"}
+                            description={"Vehicle Year:"}
+                            inputValue = { vehicleYear }
+                            inputFunc = { setVehicleYear }
+                        />
+                        <CustomerInputs 
+                            inputType = {"text"}
+                            description={"License Plate:"}
+                            inputValue = { licensePlate }
+                            inputFunc = { setLicensePlate }
+                        />
+                        <CustomerInputs 
+                            inputType = {"tel"}
+                            description={"Phone Number:"}
+                            inputValue = { phoneNumber }
+                            inputFunc = { setPhoneNumber }
+                        />
+                        <div className = 'col-6'>
+                            <label htmlFor="myMechanicSelect" ></label>
+                                Pick a mechanic:
+                                <select id = "myMechanicSelect" className = 'form-control' value={selectMechanic} onChange={e => setSelectMechanic(e.target.value)}>
+                                    <option value="First" key = {'selectFirst'}>First Available</option>
+                                    {mechanics.map(mechanic => {
+                                        return(
+                                            <option value={mechanic.name} key={'select'+ mechanic.name}>{mechanic.name}</option>
+                                        )
+                                    })}
+                                </select>
+                            </div>
+                        </div>
+                            <input className = 'btn btn-outline-primary' type='submit' value='Add Customer to Queue' />
+                            <button className = 'btn btn-outline-primary' onClick = {() => setShowAddCustomer(false)}>Close</button>
+                    </form>
+                </div>
             </div>
         </div>
     )
@@ -187,5 +184,3 @@ const AddCustomerForm = () => {
 
 export default AddCustomerForm
 
-
-// thoughts on adding customer - do we want to assign one to a mechanic here? if so is it a simple - check to see mechanic.queue.length and assign to the shortest one if no specific mechanic is selected - or push it to the mechanic's queue if selected

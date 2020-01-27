@@ -5,7 +5,7 @@ import Mechanic from './Mechanic'
 const Garage = () => {
     const { mechanics } = useAutoBodyContext()
     return(
-        <div className = 'row'>
+        <div className = 'row garage'>
             <div className = 'col-12'>
             <h5>Garage</h5>
             </div>

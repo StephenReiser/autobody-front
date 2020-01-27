@@ -60,6 +60,8 @@ function App() {
       
       const myMechanics = [...mechanics]
       const myCustomerList = []
+
+      // looping through the data we received and either adding a customer to the mechanic queue or mechanic current customer
       data.forEach(customer => {
         const myMechanicIndex = myMechanics.findIndex(mechanic => mechanic.name === customer.mechanic)
 
@@ -89,14 +91,16 @@ function App() {
       <Header />
       <div className="container">
         {showAddCustomer ? <AddCustomerForm /> : null}
-        <div className = 'row'>
-          <div className = 'col-8'>
+        
+         <div className = 'row'>
+           <div className = 'col-8 col-md-12'>
             <Garage />
-          </div>
-          <div className = 'col-4'>
+           </div>
+           <div className = 'col-4 col-md-12'>
             <CustomerList />
-          </div>
-        </div>
+           </div>
+         </div>
+         
         {viewCustomerDetails ? <CustomerDetails /> : null}
       </div>
     </AutoBodyContext.Provider>

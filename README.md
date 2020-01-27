@@ -1,6 +1,6 @@
 ### Summary
 
-This is the front end of the autobody app. For a quick an easy deployment, this was built with create-react-app. 
+This is the front end of the autobody app. For a quick an easy deployment, this was built with create-react-app. For state management it uses Context. 
 
 There are three mechanics - all are created on the front end as the assumption is they are always working. A user can log a new customer by clicking on 'Add New Customer' in the nav bar. This opens up a form for the user to create a new customer - all fields are required. The user is then able to either select "First available" or pick a specific mechanic. Selecting first available will add the customer to the mechanic who has the shortest queue. If a specific mechanic is selected, then the customer will be added to the end of that mechanic's queue.
 

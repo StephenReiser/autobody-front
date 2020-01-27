@@ -7,13 +7,13 @@ const Mechanic = (props) => {
     const [showQueue, setShowQueue] = useState(true)
 
     
-// this function moves the first customer from queue into mechanics active customer. Deletes the customer from db and removes from the waiting room as well as from mechanic queue
+    // this function moves the first customer from queue into mechanics active customer. Updates the customer in the db to chnage their status to with a mechanic removes from the waiting room as well as from mechanic queue
     const addCustomerToCurrentCustomer = () => {
         // simple logic here to make sure there is some one in queue to be added!
         if (props.details.queue.length > 0) {
         const newMechanics = [...mechanics]
         const newCustomerList = [...customerList]
-        // this function is sort of a repeat - should be able to reuse a delete fucntion some where
+        
         newMechanics[props.indexPos].currentCustomer = props.details.queue[0]
         
         newMechanics[props.indexPos].busy = true
@@ -46,7 +46,7 @@ const Mechanic = (props) => {
 
     }
 
-    // quick little function to empty the current customer and update status and time
+    // quick little function to empty the current customer and update status and time this also deletes the customer from the db
     const finishWork = () => {
         
         fetch(backendURL + props.details.currentCustomer._id, {
@@ -66,10 +66,6 @@ const Mechanic = (props) => {
     return(
 
         
-
-        // Second Version
-        // Second Version
-        // Second Version
         <div className = 'card '>
            <div className="card-body">
                 <h5 className="card-title">{props.details.name}'s Bay</h5>
@@ -100,52 +96,6 @@ const Mechanic = (props) => {
             </div>
         </div>
 
-
-// Old VERSION:::
-// OLD VERSION
-        // <div className = 'col-4'>
-        //     <h5>
-        //         {props.details.name}'s Bay
-        //     </h5>
-        //     <h5>
-        //         Status: {props.details.busy ? "Busy" : "Free"}
-        //     </h5>
-        //     <div>
-        //         Currently With:{props.details.currentCustomer.firstName}
-        //         <br />
-                
-        //         Time to be available: {props.details.currentCustomer.firstName ? `${(props.details.queue.length ) * 30} - ${(props.details.queue.length + 1) * 30}`: props.details.queue.length * 30} mins
-
-                
-                
-        //     </div>
-            
-            
-        //     {showQueue ? 
-        //         <div> Current Queue:
-        //             <ol>
-        //                 {props.details.queue.map(customer => <li key = {customer._id}>{customer.firstName}</li>)}
-        //             </ol> 
-        //         </div>
-        //     : null}
-            
-
-            
-        //     <button className = 'btn btn-outline-primary' onClick = {() => {setShowQueue(!showQueue)}}>{showQueue ? "Hide": "Show"} Queue</button>
-
-        //     {props.details.busy ?
-        //         <button className = 'btn btn-outline-primary' onClick = {() => finishWork()}>Finish Current Work</button> 
-        //         : 
-        //         <button className = 'btn btn-outline-primary' onClick = {() => addCustomerToCurrentCustomer()}>
-        //         Add Customer
-        //     </button>}
-            
-            
-
-            
-        // </div>
-
-        
   
     )
 
